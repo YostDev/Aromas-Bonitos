@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Catálogo</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+</head>
+<body>
+
+    <div class="menu-superior">
+        <img src="logo.png" alt="Logo" class="logo">
+        <div id="shop-icon">
+            <i class="fas fa-shopping-cart"></i>
+        </div>
+    </div>
+
+    <div class="landing">
+        <div class="landing-content">
+            <h1>Aromas Bonitos</h1>
+            <p>Busca en el catálogo lo que necesitas y encuentra tu aroma ideal.</p>
+            <button class="accion-landing" onclick="document.getElementById('catalogo').scrollIntoView({behavior: 'smooth'})">Ver Catálogo</button>
+        </div>
+        <div class="landing-image">
+            <img src="banner.png" alt="Banner Aromas Bonitos">
+        </div>
+    </div>
+
+
+    <div class="como-comprar">
+        <h2 class="seccion-titulo">¿Cómo comprar?</h2>
+        <div class="pasos-container">
+            <div class="paso-tarjeta">
+                <div class="paso-icono">
+                    <i class="fas fa-search"></i>
+                </div>
+                <h3>1. Selecciona tus productos</h3>
+                <p>Explora nuestro catálogo y agrega tus aromas favoritos al carrito de compras.</p>
+            </div>
+            <div class="paso-tarjeta">
+                <div class="paso-icono">
+                    <i class="fas fa-shopping-basket"></i>
+                </div>
+                <h3>2. Revisa el carrito</h3>
+                <p>Haz clic en el icono del carrito para verificar tus productos seleccionados y el total.</p>
+            </div>
+            <div class="paso-tarjeta">
+                <div class="paso-icono">
+                    <i class="fab fa-whatsapp"></i>
+                </div>
+                <h3>3. Pide por WhatsApp</h3>
+                <p>Presiona "Proceder al Pago" para enviarnos tu pedido de forma directa y coordinar.</p>
+            </div>
+        </div>
+    </div>
+
+    <div id="catalogo" class="buscador-container">
+        <i class="fas fa-search"></i>
+        <input type="text" id="buscador" placeholder="Buscar un aroma, perfume...">
+    </div>
+
+    <div class="contenedor-productos">
+        <p class="Aviso">Cargando...</p>
+    </div>
+  
+    <p class="final">No hay más productos.</p>
+
+    <div class="metodos-pago">
+        <h3><i class="fas fa-credit-card"></i> Métodos de pago aceptados</h3>
+        <div class="pago-opciones">
+            <span class="pago-item"><i class="fas fa-money-bill-wave"></i> Efectivo</span>
+            <span class="pago-item"><i class="fas fa-university"></i> Transferencia Bancaria</span>
+        </div>
+    </div>
+
+    <div id="carrito-compras">
+        <div class="carrito-header">
+            <h2>Tu Carrito de Compras</h2>
+            <button id="close-cart"><i class="fas fa-times"></i></button>
+        </div>
+
+        <div class="productos-carrito"></div>
+
+        <div class="resumen-carrito">
+            <h3>Total: <span>$0</span></h3>
+        </div>
+
+        <div class="acciones-carrito">
+            <button type="button" class="btn-vaciar">Vaciar Carrito</button>
+            <button type="button" class="btn-pagar"><strong>Proceder al Pago</strong></button>
+        </div>
+    </div>
+
+    <script src="jquery.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

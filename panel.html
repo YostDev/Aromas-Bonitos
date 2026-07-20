@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Administración - Productos</title>
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="panel.css">
+    
+    <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+</head>
+<body>
+<div class="pagina-principal">
+<div class="container">
+    <div class="seccion panel">
+        <div class="decoracion"></div>
+        <h2>Añadir Nuevo Producto</h2>
+        <form id="form-producto">
+            <div class="form-group">
+                <label for="p-nombre">Nombre:</label>
+                <input type="text" id="p-nombre" required placeholder="Ej. Empanada de Carne">
+            </div>
+            <div class="info">
+                <div class="form-group">
+                    <label for="p-precio">Precio ($):</label>
+                    <input type="number" id="p-precio" required placeholder="Ej. 1200">
+                </div>
+                <div class="form-group">
+                    <label for="p-cantidad">Cantidad:</label>
+                    <input type="number" id="p-cantidad" required placeholder="Ej. 1">
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="p-imagen">Imagen:</label>
+                <input type="file" id="p-imagen" accept="image/*" required>
+            </div>           
+            <button type="submit" id="btn-guardar">Guardar en Catálogo</button>
+        </form>
+        <div id="mensaje-estado"></div>
+    </div>
+
+    <div class="seccion productos">
+        <h3>¡Buenas Tardes!</h3>
+        <div class="form-group buscador">
+            <i class="fas fa-search"></i>
+            <input type="text" id="buscador" placeholder="Buscar producto por nombre...">
+        </div>
+        
+        <div id="lista-productos">
+            <p>Cargando productos...</p>
+        </div>
+    </div>
+</div>
+
+<div class="añadir bajar">
+    <i class="fas fa-plus"></i>
+</div>
+</div>
+
+<!-- ticket de compra -->
+<div class="pagina-ticket">
+    <div class="ticket-decoration"></div>
+    <div class="ticket-content saludo">
+        <img src="logo.png" alt="Logo" class="ticket-logo">
+        <h2>¡Gracias!</h2>
+        <p>Este ticket no es valido legalmente</p>
+    </div>
+    <div class="separador"></div>
+    <div class="ticket-content">
+        <div class="ticket-products">
+            <div class="producto-ticket">
+                <h4>- Añade productos aqui</h4>
+                <p>$0</p>
+            </div>
+        </div>
+        <div class="ticket-total">
+            <div class="descuento-container">
+                <input type="number" id="ticket-descuento" placeholder="Descuento">
+                <span>%</span>
+            </div>
+    
+            <select id="metodo-pago" name="Metodo_Pago">
+                <option value="Efectivo">💵 Efectivo</option>
+                <option value="Mercado Pago">📱 Mercado Pago</option>
+                <option value="Tarjeta">💳 Tarjeta de Crédito/Débito</option>
+                <option value="Transferencia">🏦 Transferencia Bancaria</option>
+            </select>
+            <h3>Total: <span>$0</span></h3>
+        </div>    
+    </div>
+    <div class="separador"></div>
+    <div class="ticket-content">
+        <div class="ticket-mp">
+            <img src="mplogo.png" alt="Mercado Pago" class="ticket-mp-logo">
+            <h4>vanesadls.mp</h4>
+        </div>
+    </div>
+    <div class="ticket-decoration-b"></div>
+    
+    <button id="btn-imprimir">Descargar Ticket</button>
+</div>
+
+<div class="pagina-estadistica">
+    <div class="estadistica-content">
+        <h4 class="tito">Caja de hoy <span class="etiqueta" id="stats-fecha">--/--/--</span></h4>
+        <h2 id="stats-total">$ 0</h2>
+        <div class="dinero-esparcido">
+            <h3 id="stats-mp"><i class="fa-solid fa-qrcode"></i> $ 5400</h3>
+            <h3 id="stats-efectivo"><i class="fa-solid fa-money-bill-wave"></i> $ 54000</h3>
+        </div>
+        <div class="dinero-esparcido">
+            <h3 id="stats-tarjeta"><i class="fa-solid fa-credit-card"></i> $ 3456</h3>
+            <h3 id="stats-banco"><i class="fa-solid fa-bank"></i> $ 1500</h3>
+        </div>
+        <br><br>
+        <div class="estadistica-detalles">
+            <p id="stats-cantidad">Tickets de hoy: 0</p>
+        </div>
+        
+        <h4 style="margin-top: 25px;">Top 3 Productos Más Vendidos</h4>
+        <div id="stats-top-productos" style="margin-bottom: 25px; color: #666; font-size: 0.9rem;">
+           
+        </div>
+
+        <h4>Historial de tickets</h4>
+        <div id="stats-historial">
+
+        </div>
+    </div>
+</div>
+
+
+<div class="button-menu">
+    <button class="btn-inicio" data-accion="estadistica"><i class="fas fa-chart-bar"></i></button>
+    <button class="btn-inicio" data-accion="inventario"><i class="fas fa-house"></i></button>
+    <button class="btn-inicio" data-accion="ticket"><i class="fas fa-receipt"></i></button>
+</div>
+
+<script src="panel.js"></script>
+</body>
+</html>

@@ -1,0 +1,530 @@
+/* --- VARIABLES Y CONFIGURACIÓN GENERAL --- */
+:root {
+    --blanco: #fdfdfd;
+    --texto: #333334;
+    --principal: #221e25;
+    --verde-landing: #85b736;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+* {
+    font-family: 'Poppins', sans-serif;
+    font-weight: 300;
+    box-sizing: border-box;
+    transition: 0.3s ease;
+}
+
+body {
+    overflow-x: hidden;
+    background-color: var(--blanco);
+    max-width: 1100px;
+    margin: 0 auto;
+    padding-top: 90px; /* Evita que el menú fijo tape el contenido al cargar la página */
+}
+
+button:hover {
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+/* --- MENÚ SUPERIOR (FIJO) --- */
+.menu-superior {
+    position: fixed;
+    z-index: 100; /* Asegura que quede por encima de todo */
+    top: 15px; left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--blanco);
+    width: 90%; height: 50px;
+    padding: 0 25px;
+    display: flex;
+    border-radius: 30px;
+    align-items: center;
+    justify-content: space-between;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    max-width: 1000px;
+}
+
+.logo { 
+    height: 30px; 
+    cursor: pointer; 
+}
+
+#shop-icon {
+    cursor: pointer; 
+    background-color: var(--principal);
+    text-align: center;
+    border-radius: 30px;
+    padding: 8px 20px;
+    color: var(--blanco);
+}
+
+#shop-icon:hover { 
+    transform: scale(1.05); 
+}
+
+/* --- LANDING PAGE (RESPONSIVA Y CORREGIDA) --- */
+.landing {
+    background-color: var(--verde-landing);
+    display: flex;
+    flex-direction: column-reverse; /* En móvil, la imagen va arriba del texto */
+    border-radius: 20px;
+    margin: 15px;
+    overflow: hidden;
+    color: var(--blanco);
+    padding-top: 60px; /* Desplaza la imagen hacia abajo para que el menú no tape el rociador */
+}
+
+.landing-content {
+    padding: 25px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.landing-content h1 {
+    font-size: 2rem;
+    font-weight: 600;
+    margin: 0 0 10px 0;
+}
+
+.landing-content p {
+    font-size: 1.1rem;
+    margin-bottom: 20px;
+    line-height: 1.4;
+}
+
+.accion-landing {
+    padding: 12px 25px; 
+    border: 2px solid var(--blanco);
+    cursor: pointer;
+    background: none;
+    color: var(--blanco);
+    font-weight: 600;
+    border-radius: 25px;
+    align-self: flex-start;
+}
+
+.accion-landing:hover {
+    background-color: var(--blanco);
+    color: var(--verde-landing);
+}
+
+.landing-image {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px; /* Respiro visual en los costados */
+}
+
+.landing-image img {
+    width: auto;
+    max-height: 280px; /* Evita que la botella se agigante en móviles */
+    object-fit: contain;
+}
+
+/* --- CATEGORÍAS (SCROLL HORIZONTAL) --- */
+.categorias {
+    width: 100%; 
+    padding: 25px 15px;
+    overflow-x: auto;
+    display: flex;
+    gap: 20px;
+    -webkit-overflow-scrolling: touch;
+}
+
+.categorias::-webkit-scrollbar { 
+    display: none; 
+}
+
+.etiqueta {
+    width: 90px; height: 90px;
+    background-color: #ffffff;
+    flex-shrink: 0;
+    cursor: pointer;
+    padding: 15px; border-radius: 20px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.etiqueta:hover { 
+    transform: scale(1.05); 
+}
+
+.etiqueta img { 
+    width: 100%; height: 100%; 
+    object-fit: contain; 
+}
+
+/* --- BUSCADOR --- */
+.buscador-container {
+    width: 90%; 
+    margin: 20px auto;
+    position: relative; 
+    max-width: 600px;
+}
+
+.buscador-container i {
+    position: absolute; 
+    left: 20px; top: 50%;
+    transform: translateY(-50%); 
+    color: #888;
+}
+
+#buscador {
+    width: 100%; 
+    padding: 15px 15px 15px 50px;
+    border-radius: 30px; 
+    border: 1px solid #ddd;
+    font-size: 1rem; 
+    outline: none;
+    background-color: var(--blanco);
+}
+
+#buscador:focus {
+    border-color: var(--principal);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+}
+
+/* --- TARJETAS DE PRODUCTOS --- */
+.contenedor-productos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); /* Tarjetas compactas de a dos en móvil */
+    gap: 15px;
+    padding: 15px;
+}
+
+.producto {
+    display: flex; 
+    flex-direction: column;
+    background-color: var(--blanco);
+    border-radius: 12px; 
+    overflow: hidden;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    height: 100%;
+}
+
+.producto:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+}
+
+.producto img { 
+    width: 100%; 
+    height: 150px; 
+    object-fit: cover; 
+}
+
+.info-producto { 
+    padding: 12px; 
+    display: flex; 
+    flex-direction: column; 
+    flex-grow: 1; 
+}
+
+.producto h3 { 
+    font-size: 0.95rem; 
+    margin: 0 0 5px 0; 
+    color: var(--texto); 
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.producto .precio { 
+    font-weight: bold; 
+    font-size: 1.05rem; 
+    color: var(--principal); 
+    margin-top: auto; 
+    margin-bottom: 10px; 
+}
+
+.producto .precio span {
+    color: #555555;
+    font-size: 0.85rem;
+    font-weight: 300;
+}
+
+.producto .accion {
+    width: 100%; 
+    padding: 10px;
+    background-color: var(--principal); 
+    color: var(--blanco);
+    border: none; 
+    border-radius: 6px; 
+    font-size: 0.9rem; 
+    cursor: pointer;
+    font-weight: bold;
+}
+
+.producto .accion:hover {
+    background-color: #000;
+}
+
+/* --- CARRITO DE COMPRAS --- */
+#carrito-compras {
+    position: fixed; 
+    right: 0; top: 0;
+    display: flex; 
+    flex-direction: column;
+    z-index: 200; 
+    background-color: #f4f4f4;
+    width: 100%; height: 100%;
+    padding: 20px;
+}
+
+.carrito-header { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+}
+
+#close-cart { 
+    background: none; 
+    border: none; 
+    font-size: 1.5rem; 
+    cursor: pointer; 
+    color: var(--texto);
+}
+
+.productos-carrito { 
+    background-color: white; 
+    padding: 15px; 
+    flex-grow: 1; 
+    overflow-y: auto; 
+    border-radius: 10px; 
+}
+
+.resumen-carrito { 
+    background-color: white; 
+    padding: 15px; 
+    margin-top: 10px; 
+    border-radius: 10px; 
+}
+
+.acciones-carrito { 
+    display: flex; 
+    gap: 10px; 
+    margin-top: 10px; 
+}
+
+.acciones-carrito button {
+    border: none; 
+    padding: 12px; 
+    width: 50%; 
+    border-radius: 8px; 
+    font-size: 0.9rem; 
+    cursor: pointer;
+}
+
+.btn-vaciar { 
+    background-color: #ddd; 
+    color: #333; 
+}
+
+.btn-pagar { 
+    background-color: var(--principal); 
+    color: var(--blanco); 
+}
+
+.producto-item { 
+    display: flex; 
+    justify-content: space-between; 
+    align-items: center; 
+    padding: 10px 0; 
+    border-bottom: 1px solid #eee; 
+}
+
+.btn-eliminar { 
+    background: none; 
+    border: none; 
+    color: #c0392b; 
+    cursor: pointer; 
+}
+
+/* --- MENSAJES DE ESTADO --- */
+.Aviso { 
+    color: #888888; 
+    text-align: center; 
+    font-size: 1.1rem; 
+    width: 100%;
+    grid-column: 1 / -1;
+}
+
+.final { 
+    text-align: center; 
+    color: #888; 
+    padding: 20px; 
+    font-size: 0.9rem; 
+}
+
+
+/* ==========================================================
+   MEDIA QUERIES - DISEÑO PARA PANTALLAS GRANDES (PC / TABLET)
+   ========================================================== */
+@media (min-width: 768px) {
+    body { 
+        padding-top: 110px; 
+    }
+    
+    /* La landing se vuelve horizontal (50/50 split) */
+    .landing {
+        flex-direction: row;
+        height: 400px;
+        margin: 20px auto;
+        padding-top: 0; 
+    }
+    
+    .landing-content { 
+        width: 50%; 
+        padding: 50px; 
+    }
+    
+    .landing-content h1 { 
+        font-size: 3rem; 
+    }
+    
+    .landing-image { 
+        width: 50%; 
+        height: 100%; 
+        padding: 0; 
+    }
+    
+    .landing-image img { 
+        width: 100%;
+        max-height: 100%; 
+        object-fit: cover; 
+    }
+
+    /* Grid de productos robusto para pantallas de escritorio */
+    .contenedor-productos {
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 25px; 
+        padding: 20px 0;
+    }
+    
+    .producto img { 
+        height: 220px; 
+    }
+    
+    .producto h3 { 
+        font-size: 1.1rem; 
+    }
+    
+    /* El carrito emerge lateralmente en PC en vez de cubrir toda la pantalla */
+    #carrito-compras {
+        width: 400px;
+        box-shadow: -5px 0 15px rgba(0,0,0,0.1);
+    }
+}
+/* --- SECCIÓN CÓMO COMPRAR (NUEVA) --- */
+.como-comprar {
+    padding: 30px 15px;
+    text-align: center;
+}
+
+.seccion-titulo {
+    font-size: 1.8rem;
+    font-weight: 600;
+    color: var(--principal);
+    margin-bottom: 25px;
+}
+
+.pasos-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+}
+
+.paso-tarjeta {
+    background-color: var(--blanco);
+    padding: 25px 20px;
+    border-radius: 15px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    border: 1px solid #eee;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.paso-tarjeta:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+}
+
+.paso-icono {
+    width: 60px;
+    height: 60px;
+    background-color: #f0f7e6; /* Verde sutil complementario */
+    color: var(--verde-landing);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+}
+
+/* Color distintivo para el paso final de Whatsapp */
+.paso-tarjeta:last-child .paso-icono {
+    background-color: #e6f7ed;
+    color: #25d366;
+}
+
+.paso-tarjeta h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--texto);
+    margin: 0 0 10px 0;
+}
+
+.paso-tarjeta p {
+    font-size: 0.9rem;
+    color: #666;
+    line-height: 1.5;
+    margin: 0;
+}
+
+/* --- SECCIÓN MÉTODOS DE PAGO (NUEVA) --- */
+.metodos-pago {
+    margin: 30px 15px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 15px;
+    text-align: center;
+    border: 1px dashed #ddd;
+}
+
+.metodos-pago h3 {
+    font-size: 1.1rem;
+    font-weight: 600;
+    color: var(--texto);
+    margin: 0 0 15px 0;
+}
+
+.pago-opciones {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.pago-item {
+    background-color: var(--blanco);
+    padding: 10px 20px;
+    border-radius: 30px;
+    font-size: 0.95rem;
+    font-weight: 400;
+    color: var(--principal);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.pago-item i {
+    color: var(--verde-landing);
+}
