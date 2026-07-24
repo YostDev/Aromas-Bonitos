@@ -157,7 +157,7 @@ const SLUG_ACTUAL = obtenerSlug();
                 productos.forEach(function(prod) {
                     let estructuraProducto = `
                         <div class="producto">
-                            <img src="${prod.Imagen}" alt="${prod.Nombre}">
+                            <img src="${prod.Imagen}" loading="lazy" alt="${prod.Nombre}">
                             <div class="info-producto">
                                 <h3>${prod.Nombre}</h3>
                                 <p class="precio">$${prod.Precio} - <span>${prod.Etiqueta}</span></p>
